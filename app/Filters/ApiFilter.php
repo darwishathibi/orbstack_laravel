@@ -1,36 +1,19 @@
 <?php
 
-namespace App\Services\V1;
+namespace App\Filters;
 
 use Illuminate\Http\Request;
 
-class CustomerQuery
+class ApiFilter
 {
     // Define the allowed query parameters and their operators
-    protected $safeParams = [
-        'name' => ['eq'],
-        'type' => ['eq'],
-        'email' => ['eq'],
-        'address' => ['eq'],
-        'city' => ['eq'],
-        'state' => ['eq'],
-        'postalCode' => ['eq', 'gt', 'lt'],
-
-    ];
+    protected $safeParams = [];
 
     // Map request parameters to database columns
-    protected $columnMap = [
-        'postalCode' => 'postal_code',
-    ];
+    protected $columnMap = [];
 
     // Map database columns to request parameters
-    protected $operatorMap = [
-        'eq' => '=',
-        'gt' => '>',
-        'lt' => '<',
-        'lte' => '<=',
-        'gte' => '>=',
-    ];
+    protected $operatorMap = [];
 
     public function transform(Request $request)
     {
